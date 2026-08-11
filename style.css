@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.celebration {
+    position: relative;
+}
+
+.title {
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.balloons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    perspective: 1000px;
+}
+
+.balloon {
+    width: 60px;
+    height: 80px;
+    border-radius: 50% 50% 50% 0;
+    position: relative;
+    transform: rotate(-45deg);
+    animation: float 3s ease-in-out infinite;
+}
+
+.balloon.red {
+    background: linear-gradient(135deg, #ff6b6b, #ff5252);
+    animation-delay: 0s;
+}
+
+.balloon.blue {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    animation-delay: 0.2s;
+}
+
+.balloon.yellow {
+    background: linear-gradient(135deg, #ffd93d, #ffb700);
+    animation-delay: 0.4s;
+}
+
+.balloon.green {
+    background: linear-gradient(135deg, #6bcf7f, #4ab55f);
+    animation-delay: 0.6s;
+}
+
+.balloon.purple {
+    background: linear-gradient(135deg, #c084fc, #a855f7);
+    animation-delay: 0.8s;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background: #333;
+}
+
+@keyframes float {
+    0%, 100% { transform: rotate(-45deg) translateY(0) translateX(0); }
+    25% { transform: rotate(-45deg) translateY(-20px) translateX(5px); }
+    50% { transform: rotate(-45deg) translateY(-40px) translateX(-5px); }
+    75% { transform: rotate(-45deg) translateY(-20px) translateX(5px); }
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.cake {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    margin: 0 auto 30px;
+    background: linear-gradient(135deg, #ffd89b, #ff9e64);
+    border-radius: 0 0 20px 20px;
+    box-shadow: inset -5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cake::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(135deg, #ffb380, #ff9e64);
+    border-radius: 50% 50% 0 0;
+}
+
+.candle {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 30px;
+    background: #fff59d;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+.flame {
+    position: absolute;
+    top: -65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 20px solid #ff6b6b;
+    border-radius: 50% 50% 50% 50%;
+    filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.8));
+    animation: flicker 0.5s ease-in-out infinite;
+}
+
+@keyframes flicker {
+    0%, 100% {
+        transform: translateX(-50%) scaleY(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) scaleY(1.1) scaleX(0.9);
+        opacity: 0.9;
+    }
+}
+
+.message {
+    font-size: 1.3em;
+    color: #333;
+    margin: 20px 0;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.wishes {
+    background: #f0f0f0;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.wish-item {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 0;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.wish-item:hover {
+    transform: scale(1.05);
+    color: #667eea;
+}
+
+.btn-confetti {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1em;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-confetti:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+}
+
+.btn-confetti:active {
+    transform: translateY(-1px);
+}
+
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 2em;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    .message {
+        font-size: 1.1em;
+    }
+
+    .wish-item {
+        font-size: 1em;
+    }
+}
